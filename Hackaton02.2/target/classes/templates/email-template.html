@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>¡Gracias por tu compra!</title>
+</head>
+<body>
+<h1>¡Gracias por tu compra!</h1>
+<p>¡Hola <span th:text="${nombre}"></span>! Te informamos que tu compra ha sido exitosa.</p>
+<ul>
+    <li>Nombre de la película: <span th:text="${nombrePelicula}"></span></li>
+    <li>Fecha de la función: <span th:text="${fechaFuncion}"></span></li>
+    <li>Cantidad de entradas: <span th:text="${cantidadEntradas}"></span></li>
+    <li>Precio total: <span th:text="${precioTotal}"></span></li>
+    <li>Código QR: <img th:src="${qr}" alt="Código QR"/></li>
+</ul>
+<p>¡No olvides llevar tu código QR impreso o en tu dispositivo móvil!</p>
+</body>
+</html>
