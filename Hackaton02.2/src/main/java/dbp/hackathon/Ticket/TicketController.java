@@ -36,7 +36,7 @@ public class TicketController {
 
             // Construye la respuesta con la ubicación del nuevo recurso
             URI location = URI.create("/tickets/" + newTicket.getId());
-            return ResponseEntity.created(location).body(newTicket);
+            return ResponseEntity.ok(newTicket);
 
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -57,7 +57,7 @@ public class TicketController {
         return ResponseEntity.ok(tickets);
     }
 
-    @PatchMapping("/{id}/canjear")
+    @PatchMapping("/{id}/changeState")
     public ResponseEntity<String> canjearTicket(@PathVariable Long id) {
         try {
             ticketService.changeState(id);

@@ -1,5 +1,6 @@
 package dbp.hackathon.Funcion;
 
+import dbp.hackathon.Ticket.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,9 @@ public class FuncionController {
 
     @Autowired
     private FuncionService funcionService;
+
+    @Autowired
+    private TicketService ticketService;
 
     @PostMapping
     public ResponseEntity<Funcion> saveFuncion(@RequestBody Funcion funcion) {
