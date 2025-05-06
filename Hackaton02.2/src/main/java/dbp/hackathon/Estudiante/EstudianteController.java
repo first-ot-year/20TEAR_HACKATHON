@@ -1,6 +1,7 @@
 package dbp.hackathon.Estudiante;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,8 @@ public class EstudianteController {
 
     @PostMapping
     public ResponseEntity<Estudiante> save(@RequestBody Estudiante estudiante) {
-        return ResponseEntity.ok(estudianteService.save(estudiante));
+        Estudiante savedEstudiante = estudianteService.save(estudiante);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedEstudiante);
     }
 
     @GetMapping("/{id}")

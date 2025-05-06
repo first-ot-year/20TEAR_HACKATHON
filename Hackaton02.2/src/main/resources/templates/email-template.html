@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang = "es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>¡Gracias por tu compra!</title>
+    <title>Confirmación de compra</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { color: #2c3e50; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .details { margin: 20px 0; }
+        .detail-item { margin-bottom: 10px; }
+        .qr-container { text-align: center; margin: 25px 0; }
+        .qr-code { border: 1px solid #ddd; padding: 10px; display: inline-block; }
+        .footer { margin-top: 20px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
+    </style>
 </head>
 <body>
-<h1>¡Gracias por tu compra!</h1>
-<p>¡Hola <span th:text="${nombre}"></span>! Te informamos que tu compra ha sido exitosa.</p>
-<ul>
-    <li>Nombre de la película: <span th:text="${nombrePelicula}"></span></li>
-    <li>Fecha de la función: <span th:text="${fechaFuncion}"></span></li>
-    <li>Cantidad de entradas: <span th:text="${cantidadEntradas}"></span></li>
-    <li>Precio total: <span th:text="${precioTotal}"></span></li>
-    <li>Código QR: <img th:src="${qr}" alt="Código QR"/></li>
-</ul>
-<p>¡No olvides llevar tu código QR impreso o en tu dispositivo móvil!</p>
+<h1 class="header">¡Confirmación de compra!</h1>
+<p>Hola <span th:text="${estudianteName}"></span>,</p>
+<p>Aquí tienes los detalles de tu compra:</p>
+<div class="details">
+    <div class="detail-item"><strong>Evento:</strong> <span th:text="${nombreEvento}"></span></div>
+    <div class="detail-item"><strong>Fecha:</strong> <span th:text="${fechaEvento}"></span></div>
+    <div class="detail-item"><strong>Cantidad:</strong> <span th:text="${cantidadEntradas}"></span> entrada(s)</div>
+    <div class="detail-item"><strong>Total:</strong> $<span th:text="${total}"></span></div>
+</div>
+<div class="qr-container">
+    <div class="qr-code">
+        <img th:src="${qr}" alt="Código QR para entrada" width="200"/>
+        <p>ID de ticket: <span th:text="${ticketId}"></span></p> <!--Esto de mostrar el id del ticket se puede eliminar, al final lo que se pide es que pueda escanearlo -->
+    </div>
+    <p><a th:href="${qr}" target="_blank">Haz clic aquí para ver tu QR.</a></p>
+</div>
+<div class="footer">
+    <p>Presenta este código QR en la entrada del evento.</p>
+    <p>¡Esperamos que disfrutes la función!</p>
+</div>
 </body>
 </html>
